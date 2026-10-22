@@ -37,23 +37,8 @@ h2 {
   color: var(--cream);
   padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5rem);
 }
-.lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  text-decoration: none;
-  color: var(--cream);
-  font-size: clamp(2.6rem, 8vw, 6.5rem);
-}
-.lockup__pin { height: 1.55em; width: auto; display: block; }
-.lockup__word {
-  display: flex;
-  flex-direction: column;
-  font-family: "Anton", "Arial Narrow", sans-serif;
-  text-transform: uppercase;
-  line-height: 0.86;
-  letter-spacing: 0.005em;
-}
+.lockup { display: block; max-width: 560px; }
+.lockup img { width: 100%; height: auto; display: block; }
 .hero__tag {
   font-size: clamp(1.25rem, 2.6vw, 1.75rem);
   font-weight: 600;
