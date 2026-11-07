@@ -84,6 +84,8 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
   font-weight: 600;
 }
 .video--placeholder p { max-width: 32ch; margin: 0; }
+.episode__title { margin: 1rem 0 0.25rem; font-size: 1.25rem; }
+.episode__desc { margin: 0; max-width: 65ch; }
 
 .about p { max-width: 65ch; }
 
@@ -117,6 +119,37 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .tiers li { margin-bottom: 0.6rem; }
 
 .tip { background: var(--cream); }
+
+/* form */
+.form { margin-top: 2rem; display: grid; gap: 1.1rem; }
+.form__row { display: grid; gap: 0.35rem; }
+.form label { font-weight: 700; }
+.form__opt { font-weight: 400; color: var(--mute); }
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--green);
+  border-radius: 6px;
+  padding: 0.6em 0.8em;
+}
+.form textarea { resize: vertical; min-height: 9rem; }
+.form input[type="file"] { padding: 0.45em 0.6em; background: var(--paper); }
+.form input:focus,
+.form select:focus,
+.form textarea:focus { outline: 3px solid var(--green-deep); outline-offset: 2px; }
+.form__help { margin: 0; font-size: 0.95rem; color: var(--mute); }
+.form__hp { display: none; }
+.form .btn { justify-self: start; }
+.btn--solid { background: var(--green); color: var(--cream); border-color: var(--green); }
+.btn--solid:hover { background: var(--green-deep); border-color: var(--green-deep); filter: none; }
+
+/* thank-you page */
+.hero--short { padding: clamp(2rem, 5vw, 3.5rem) 0; }
+.thanks main { min-height: 50vh; }
 
 /* footer */
 .foot { background: var(--green-deep); color: var(--cream); padding: 2.5rem 0; font-size: 1rem; }
