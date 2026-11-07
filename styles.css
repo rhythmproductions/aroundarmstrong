@@ -77,7 +77,10 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .embed { max-width: 100%; overflow: hidden; border-radius: 8px; }
 .embed .fb-post,
 .embed .fb-post span,
-.embed .fb-post iframe { width: 100% !important; max-width: 100% !important; }
+.embed .fb-post iframe,
+.embed .fb-video,
+.embed .fb-video span,
+.embed .fb-video iframe { width: 100% !important; max-width: 100% !important; }
 .video--placeholder {
   display: grid;
   place-items: center;
