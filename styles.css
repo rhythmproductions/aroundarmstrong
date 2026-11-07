@@ -74,6 +74,10 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
   overflow: hidden;
 }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.embed { max-width: 100%; overflow: hidden; border-radius: 8px; }
+.embed .fb-post,
+.embed .fb-post span,
+.embed .fb-post iframe { width: 100% !important; max-width: 100% !important; }
 .video--placeholder {
   display: grid;
   place-items: center;
@@ -86,6 +90,33 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .video--placeholder p { max-width: 32ch; margin: 0; }
 .episode__title { margin: 1rem 0 0.25rem; font-size: 1.25rem; }
 .episode__desc { margin: 0; max-width: 65ch; }
+.follow { margin-top: 2rem; }
+.follow__note { margin: 0.75rem 0 0; }
+.signup { margin-top: 3rem; max-width: 65ch; }
+.signup h3 {
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+.signup__form { display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; margin-top: 1.25rem; }
+.signup__form input[type="email"] {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--green);
+  border-radius: 6px;
+  padding: 0.6em 0.8em;
+}
+.signup__form input:focus { outline: 3px solid var(--green-deep); outline-offset: 2px; }
+.signup__form .btn { font: inherit; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; cursor: pointer; }
+.signup__fine { margin: 0.75rem 0 0; font-size: 0.95rem; color: var(--mute); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 520px) { .signup__form { grid-template-columns: 1fr; } }
 
 .about p { max-width: 65ch; }
 
@@ -143,6 +174,8 @@ section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
 .form textarea:focus { outline: 3px solid var(--green-deep); outline-offset: 2px; }
 .form__help { margin: 0; font-size: 0.95rem; color: var(--mute); }
 .form__hp { display: none; }
+.form__row--check label { display: flex; align-items: center; gap: 0.6rem; font-weight: 400; }
+.form__row--check input { width: 1.2rem; height: 1.2rem; accent-color: var(--green); }
 .form .btn { justify-self: start; }
 .btn--solid { background: var(--green); color: var(--cream); border-color: var(--green); }
 .btn--solid:hover { background: var(--green-deep); border-color: var(--green-deep); filter: none; }

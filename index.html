@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v21.0"></script>
 
 <header class="hero">
   <div class="wrap">
@@ -26,9 +28,9 @@
     <p class="hero__tag">The weekly show about what's going on<br>around Armstrong and Spallumcheen.</p>
     <p class="hero__sub">New episode every Friday.</p>
     <div class="hero__cta">
-      <a class="btn" href="https://www.youtube.com/@aroundarmstrong" target="_blank" rel="noopener">Watch on YouTube</a>
-      <a class="btn btn--ghost" href="https://www.facebook.com/aroundarmstrong" target="_blank" rel="noopener">Follow on Facebook</a>
+      <a class="btn" href="https://www.facebook.com/aroundarmstrong" target="_blank" rel="noopener">Follow on Facebook</a>
     </div>
+    <p class="hero__sub">Follow the page so you don't miss an episode.</p>
   </div>
 </header>
 
@@ -37,10 +39,27 @@
   <section class="episode" id="latest">
     <div class="wrap">
       <h2>Latest episode</h2>
-      <!-- Update this video ID every Friday. The ID is the part after v= in the YouTube link. -->
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/Ukx0wb8z_as" title="Around Armstrong, Episode 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <!-- Update this Facebook post URL every Friday -->
+      <div class="embed"><div class="fb-post" data-href="https://www.facebook.com/share/v/1FSYLM9C8z/" data-width="auto" data-show-text="true"></div></div>
       <p class="episode__title"><strong>Episode 1</strong></p>
       <p class="episode__desc">Mayor Chris Pieper, Shawn Coady of Legion Branch 35 on Remembrance Day and the Legion's 100th, a community shout-out, the Kin Club's year, and what's on around town.</p>
+
+      <div class="follow">
+        <a class="btn btn--solid" href="https://www.facebook.com/aroundarmstrong" target="_blank" rel="noopener">Follow on Facebook</a>
+        <p class="follow__note">Follow the page so you don't miss an episode.</p>
+      </div>
+
+      <div class="signup">
+        <h3>Get the show in your inbox</h3>
+        <p>Every Friday: the new episode, plus what's on around Armstrong and Spallumcheen that weekend.</p>
+        <form class="signup__form" action="https://buttondown.com/api/emails/embed-subscribe/aroundarmstrong" method="post" target="_blank">
+          <label for="s-email" class="visually-hidden">Email</label>
+          <input id="s-email" type="email" name="email" placeholder="Your email" autocomplete="email" required>
+          <input type="hidden" name="tag" value="website">
+          <button class="btn btn--solid" type="submit">Sign me up</button>
+        </form>
+        <p class="signup__fine">Sent by Around Armstrong, once a week. Unsubscribe any time.</p>
+      </div>
     </div>
   </section>
 
@@ -75,7 +94,7 @@
       <form class="form" name="submissions" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="submissions">
         <p class="form__hp">
-          <label>Don't fill this out if you're a person: <input name="bot-field"></label>
+          <label>Don't fill this out if you're a person: <input type="text" name="bot-field"></label>
         </p>
 
         <div class="form__row">
@@ -120,6 +139,10 @@
           <textarea id="f-details" name="details" rows="6" required></textarea>
         </div>
 
+        <div class="form__row form__row--check">
+          <label><input type="checkbox" name="newsletter" value="yes"> Add me to the weekly email too</label>
+        </div>
+
         <div class="form__row">
           <label for="f-photo">Photo <span class="form__opt">(optional)</span></label>
           <input id="f-photo" name="photo" type="file" accept="image/*">
@@ -136,7 +159,7 @@
 <footer class="foot">
   <div class="wrap">
     <nav class="social" aria-label="Social links">
-      <a href="https://www.youtube.com/@aroundarmstrong" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.youtube.com/@aroundarmstrong" target="_blank" rel="noopener">Episodes on YouTube</a>
       <a href="https://www.facebook.com/aroundarmstrong" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.instagram.com/aroundarmstrong" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@aroundarmstrong" target="_blank" rel="noopener">TikTok</a>

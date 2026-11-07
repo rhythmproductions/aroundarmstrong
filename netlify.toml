@@ -1,6 +1,9 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -12,3 +15,23 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+[[redirects]]
+  from = "/follow"
+  to = "https://www.facebook.com/aroundarmstrong"
+  status = 302
+
+[[redirects]]
+  from = "/card"
+  to = "https://www.facebook.com/aroundarmstrong"
+  status = 302
+
+[[redirects]]
+  from = "/board"
+  to = "https://www.facebook.com/aroundarmstrong"
+  status = 302
+
+[[redirects]]
+  from = "/chamber"
+  to = "https://www.facebook.com/aroundarmstrong"
+  status = 302
