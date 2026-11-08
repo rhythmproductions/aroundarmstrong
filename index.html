@@ -94,8 +94,8 @@
 
       <form class="form" name="submissions" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="submissions">
-        <p class="form__hp">
-          <label>Don't fill this out if you're a person: <input type="text" name="bot-field"></label>
+        <p class="form__hp" aria-hidden="true">
+          <label>Leave this field empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
         </p>
 
         <div class="form__row">
