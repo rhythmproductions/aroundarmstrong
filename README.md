@@ -14,3 +14,7 @@ This is the show's website, aroundarmstrong.ca. Plain HTML and CSS, no build ste
 - **Logo files:** `assets/`. The pin SVGs are recolourable.
 
 Produced by Rhythm Productions.
+
+## Credits
+
+Footer platform icons from Simple Icons (simpleicons.org), CC0.
