@@ -209,7 +209,9 @@
             <label><input type="checkbox" name="newsletter" value="yes"> <strong>Add me to the weekly email too</strong></label>
           </div>
 
-          <!-- Consent, then photo, then submit -->
+          <!-- Photo box: consent, then photo. Submit sits right after it. -->
+          <fieldset class="form__photobox">
+          <legend>Add a photo <span class="form__opt" id="f-photo-opt">(optional)</span></legend>
           <div class="form__row form__row--check form__consent">
             <label><input id="f-consent" type="checkbox" name="consent" value="yes" required aria-describedby="f-consent-err"> <span id="f-consent-text">I took this photo or have permission to share it. If people are in it, they've agreed to it being shared (a parent or guardian for anyone under 18). Around Armstrong can show it on the show, the website and its social media pages.</span></label>
             <input type="hidden" name="consent_text" id="f-consent-text-field" value="I took this photo or have permission to share it. If people are in it, they've agreed to it being shared (a parent or guardian for anyone under 18). Around Armstrong can show it on the show, the website and its social media pages.">
@@ -218,12 +220,13 @@
           </div>
 
           <div class="form__row" id="f-photo-row">
-            <label for="f-photo">Photo <span class="form__opt" id="f-photo-opt">(optional)</span></label>
+            <label for="f-photo">Choose a photo</label>
             <input id="f-photo" name="photo" type="file" accept="image/*" aria-describedby="f-photo-help f-photo-lock f-photo-err">
             <p class="form__help" id="f-photo-help">One photo, up to 8 MB.</p>
             <p class="form__help form__lock" id="f-photo-lock" hidden>Tick the box above to add a photo.</p>
             <p class="form__error" id="f-photo-err" hidden></p>
           </div>
+          </fieldset>
 
           <button class="btn btn--solid" type="submit">Send it in</button>
         </div>

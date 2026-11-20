@@ -77,7 +77,7 @@
     form.querySelectorAll("[data-help-pet]").forEach(function (el) { el.hidden = !isPet; });
 
     townOpt.hidden = isPet;
-    photoOpt.textContent = isPet ? "" : "(optional)";
+    photoOpt.textContent = isPet ? "(required)" : "(optional)";
     photo.required = isPet;
 
     var noPhoto = TYPES_WITHOUT_PHOTO.indexOf(type) !== -1;
