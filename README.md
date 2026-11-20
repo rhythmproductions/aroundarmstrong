@@ -8,6 +8,7 @@ This is the show's website, aroundarmstrong.ca. Plain HTML and CSS, no build ste
 
 - **New episode:** in `index.html`, find the `Update this Facebook post URL every Friday` comment in the Latest episode section and change the `data-href` on the `fb-post` div to the new post's URL.
 - **Mailing list:** the sign-up form posts to Buttondown (username `AroundArmstrong`). The submission form's checkbox is handled by `netlify/functions/submission-created.js`, which needs `BUTTONDOWN_API_KEY` set in Netlify's environment variables.
+- **Submission form:** the type picker comes first and `form.js` shows only that type's fields. Hidden fields are disabled, so they keep what was typed but aren't sent. Pet of the week has its own fields (`pet_name`, `pet_about`). Every type has the consent box right above the photo upload; the upload stays locked until it's ticked. Each submission saves `consent`, `consent_text` and `consent_at`. Netlify's own timestamp on the submission is the server-side record of when it arrived.
 - **Short links:** `/follow`, `/card`, `/board` and `/chamber` redirect to the Facebook page (see `netlify.toml`).
 - **Copy:** edit `index.html`. Bios and tagline match the social accounts; keep them in sync.
 - **Colours and type:** `styles.css`. Green `#1F5F3A`, cream `#F2EAD3`, Anton for headings, Barlow Semi Condensed for body.

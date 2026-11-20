@@ -6,7 +6,9 @@
   <title>Around Armstrong | The weekly show about what's going on around Armstrong and Spallumcheen</title>
   <meta name="description" content="The weekly show about what's going on around Armstrong and Spallumcheen. New episode every Friday.">
   <link rel="canonical" href="https://aroundarmstrong.ca/">
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <meta property="og:title" content="Around Armstrong | The weekly show about what's going on around Armstrong and Spallumcheen">
   <meta property="og:description" content="The weekly show about what's going on around Armstrong and Spallumcheen. New episode every Friday.">
   <meta property="og:image" content="https://aroundarmstrong.ca/assets/og-image.png">
@@ -103,67 +105,128 @@
       <h2>Got something happening?</h2>
       <p>An event, a milestone, a shout-out, or a story the town should hear about. Send it in with the form below, or email <a href="mailto:hello@aroundarmstrong.ca">hello@aroundarmstrong.ca</a>.</p>
 
-      <form class="form" name="submissions" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
+      <form class="form" id="submission-form" name="submissions" method="POST" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="submissions">
         <p class="form__hp" aria-hidden="true">
           <label>Leave this field empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
         </p>
 
         <div class="form__row">
-          <label for="f-name">Your name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-        </div>
-
-        <div class="form__row">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-        </div>
-
-        <div class="form__row">
-          <label for="f-phone">Phone <span class="form__opt">(optional)</span></label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
-        </div>
-
-        <div class="form__row">
-          <label for="f-org">Business or organization <span class="form__opt">(optional)</span></label>
-          <input id="f-org" name="organization" type="text" autocomplete="organization">
-        </div>
-
-        <div class="form__row">
           <label for="f-type">What is it?</label>
-          <select id="f-type" name="type" required>
+          <select id="f-type" name="type" required aria-describedby="f-type-err">
             <option value="" disabled selected>Pick one</option>
             <option>Event</option>
             <option>Milestone</option>
             <option>Shout-out</option>
+            <option>Pet of the week</option>
             <option>Story idea</option>
             <option>Show guest</option>
             <option>Sponsor inquiry</option>
             <option>Something else</option>
           </select>
+          <p class="form__error" id="f-type-err" hidden></p>
         </div>
 
-        <div class="form__row">
-          <label for="f-date">When is it happening? <span class="form__opt">(optional)</span></label>
-          <input id="f-date" name="date" type="date">
-        </div>
+        <div class="form__body" id="form-body">
 
-        <div class="form__row">
-          <label for="f-details">Tell me about it</label>
-          <textarea id="f-details" name="details" rows="6" required></textarea>
-        </div>
+          <!-- Pet of the week only -->
+          <fieldset class="form__group" data-for="pet">
+            <legend class="visually-hidden">Pet of the week</legend>
+            <p class="form__intro">Send us your pet and a couple of sentences about them. We pick one each week.</p>
+            <div class="form__row">
+              <label for="f-pet-name">Pet's name</label>
+              <input id="f-pet-name" name="pet_name" type="text" aria-describedby="f-pet-name-err">
+              <p class="form__error" id="f-pet-name-err" hidden></p>
+            </div>
+          </fieldset>
 
-        <div class="form__row form__row--check">
-          <label><input type="checkbox" name="newsletter" value="yes"> <strong>Add me to the weekly email too</strong></label>
-        </div>
+          <!-- Shared by every type -->
+          <div class="form__row">
+            <label for="f-name"><span data-label-general>Your name</span><span data-label-pet hidden>Your first name</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="form__error" id="f-name-err" hidden></p>
+          </div>
 
-        <div class="form__row">
-          <label for="f-photo">Photo <span class="form__opt">(optional)</span></label>
-          <input id="f-photo" name="photo" type="file" accept="image/*">
-          <p class="form__help">One photo, up to 8 MB.</p>
-        </div>
+          <div class="form__row">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-help f-email-err">
+            <p class="form__help" id="f-email-help" data-help-pet hidden>Not shown on air. So we can tell you which Friday your pet is on.</p>
+            <p class="form__error" id="f-email-err" hidden></p>
+          </div>
 
-        <button class="btn btn--solid" type="submit">Send it in</button>
+          <fieldset class="form__row form__town" aria-describedby="f-town-err">
+            <legend><span>Your town</span> <span class="form__opt" data-town-opt>(optional)</span></legend>
+            <div class="form__choices">
+              <label class="form__choice"><input type="radio" name="town" value="Armstrong"> Armstrong</label>
+              <label class="form__choice"><input type="radio" name="town" value="Spallumcheen"> Spallumcheen</label>
+              <label class="form__choice"><input type="radio" name="town" value="Other" id="f-town-other-radio"> Other</label>
+            </div>
+            <div class="form__other" id="f-town-other-wrap" hidden>
+              <label for="f-town-other">Which town?</label>
+              <input id="f-town-other" name="town_other" type="text" autocomplete="address-level2" aria-describedby="f-town-other-err">
+              <p class="form__error" id="f-town-other-err" hidden></p>
+            </div>
+            <p class="form__error" id="f-town-err" hidden></p>
+          </fieldset>
+
+          <!-- Every type except Pet of the week -->
+          <fieldset class="form__group" data-for="general">
+            <legend class="visually-hidden">Details</legend>
+            <div class="form__row">
+              <label for="f-phone">Phone <span class="form__opt">(optional)</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+
+            <div class="form__row">
+              <label for="f-org">Business or organization <span class="form__opt">(optional)</span></label>
+              <input id="f-org" name="organization" type="text" autocomplete="organization">
+            </div>
+
+            <div class="form__row">
+              <label for="f-date">When is it happening? <span class="form__opt">(optional)</span></label>
+              <input id="f-date" name="date" type="date">
+            </div>
+
+            <div class="form__row">
+              <label for="f-details">Tell me about it</label>
+              <textarea id="f-details" name="details" rows="6" required aria-describedby="f-details-err"></textarea>
+              <p class="form__error" id="f-details-err" hidden></p>
+            </div>
+          </fieldset>
+
+          <!-- Pet of the week only -->
+          <fieldset class="form__group" data-for="pet">
+            <legend class="visually-hidden">About your pet</legend>
+            <div class="form__row">
+              <label for="f-pet-about">About your pet (2 sentences)</label>
+              <textarea id="f-pet-about" name="pet_about" rows="4" maxlength="300" aria-describedby="f-pet-about-count f-pet-about-err"></textarea>
+              <p class="form__help form__count" id="f-pet-about-count" aria-live="polite">0 / 300</p>
+              <p class="form__error" id="f-pet-about-err" hidden></p>
+            </div>
+          </fieldset>
+
+          <div class="form__row form__row--check">
+            <label><input type="checkbox" name="newsletter" value="yes"> <strong>Add me to the weekly email too</strong></label>
+          </div>
+
+          <!-- Consent, then photo, then submit -->
+          <div class="form__row form__row--check form__consent">
+            <label><input id="f-consent" type="checkbox" name="consent" value="yes" required aria-describedby="f-consent-err"> <span id="f-consent-text">I took this photo or have permission to share it. If people are in it, they've agreed to it being shared (a parent or guardian for anyone under 18). Around Armstrong can show it on the show, the website and its social media pages.</span></label>
+            <input type="hidden" name="consent_text" id="f-consent-text-field" value="I took this photo or have permission to share it. If people are in it, they've agreed to it being shared (a parent or guardian for anyone under 18). Around Armstrong can show it on the show, the website and its social media pages.">
+            <input type="hidden" name="consent_at" id="f-consent-at" value="">
+            <p class="form__error" id="f-consent-err" hidden></p>
+          </div>
+
+          <div class="form__row" id="f-photo-row">
+            <label for="f-photo">Photo <span class="form__opt" id="f-photo-opt">(optional)</span></label>
+            <input id="f-photo" name="photo" type="file" accept="image/*" aria-describedby="f-photo-help f-photo-lock f-photo-err">
+            <p class="form__help" id="f-photo-help">One photo, up to 8 MB.</p>
+            <p class="form__help form__lock" id="f-photo-lock" hidden>Tick the box above to add a photo.</p>
+            <p class="form__error" id="f-photo-err" hidden></p>
+          </div>
+
+          <button class="btn btn--solid" type="submit">Send it in</button>
+        </div>
       </form>
     </div>
   </section>
@@ -186,5 +249,6 @@
   </div>
 </footer>
 
+<script src="/form.js" defer></script>
 </body>
 </html>

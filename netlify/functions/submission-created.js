@@ -1,5 +1,5 @@
 // Runs on every Netlify form submission.
-// If the person ticked "Add me to the weekly email too", add them to Buttondown.
+// Checks consent was given, then if the person ticked "Add me to the weekly email too", add them to Buttondown.
 // Needs the BUTTONDOWN_API_KEY environment variable set in Netlify.
 
 exports.handler = async (event) => {
@@ -8,6 +8,13 @@ exports.handler = async (event) => {
     data = JSON.parse(event.body).payload.data || {};
   } catch (err) {
     return { statusCode: 400, body: "Bad payload" };
+  }
+
+  // The form won't send without the consent box ticked. If something arrives without it
+  // (someone posting around the page), log it and do nothing else with it.
+  if (data.consent !== "yes" || !data.consent_text) {
+    console.log("NO CONSENT on submission", (event.body && JSON.parse(event.body).payload.id) || "", "type:", data.type || "");
+    return { statusCode: 200, body: "No consent, skipped" };
   }
 
   if (data.newsletter !== "yes" || !data.email) {
